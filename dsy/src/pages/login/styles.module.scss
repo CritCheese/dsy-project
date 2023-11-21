@@ -1,0 +1,9 @@
+.container {
+    :global {
+        .ant-space-item {
+            display: flex;
+            justify-content: center;
+            margin-top: 21rem;
+        }
+    }
+}
