@@ -1,0 +1,42 @@
+.sider {
+  height: 100vh;
+  margin-top: 0.5rem;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border: 1px solid #001529;
+  .btnUpload {
+    width: 98%;
+    margin: 1rem 0 1rem 0;
+    height: 3rem;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  :global {
+    .ant-menu {
+      background-color: transparent;
+    }
+    .ant-upload {
+      color: #ffff;
+      font-size: 1rem;
+      font-weight: 700;
+      width: 98% !important;
+      height: 10% !important;
+    }
+    .ant-layout-sider-children {
+      margin-top: 1.5rem;
+    }
+    .ant-menu-submenu-title {
+      padding-left: 10px !important;
+    }
+    .ant-menu-item {
+      padding-left: 15px !important;
+    }
+  }
+}
+.modal {
+  :global {
+    .ant-modal-body {
+      margin: 2rem !important;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.header {
+    color: #ffff !important;
+    .col {
+        display: flex;
+        align-self: center;
+    }
+    .space {
+        display: flex;
+        justify-content: end;
+    }
+    :global {
+        .ant-typography {
+            color: #ffff !important;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+            font-size: 1.5rem;
+        }
+        .ant-input-group .ant-input-group-addon {
+            background-color: #ffff !important;
+        }
+        .ant-dropdown-menu-title-content {
+            font-weight: 500;
+        }
+    }
+}
