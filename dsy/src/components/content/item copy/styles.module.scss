@@ -1,0 +1,15 @@
+.card {
+    min-width: 8rem !important;
+    .space {
+        display: flex;
+        justify-content: space-between;
+    }
+  :global {
+    .ant-card-body {
+      padding: 1rem !important;
+      border-radius: 1rem;
+      background-color: #f0f0f0;
+      min-width: 5rem !important;
+    }
+  }
+}

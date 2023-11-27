@@ -13,7 +13,7 @@ export const myFolder: Folder[] = [
       children: [
         {
           id: "123-abc",
-          foldername: "Copy Folder 1",
+          foldername: "Folder 1",
           mimetype: "audio/mpeg",
           hasThumbnail: false,
           shared: false,
@@ -22,7 +22,7 @@ export const myFolder: Folder[] = [
         },
         {
           id: "123-abcd",
-          foldername: "Copy Folder 2",
+          foldername: "Folder 2",
           mimetype: "audio/mpeg",
           hasThumbnail: false,
           shared: false,
@@ -32,7 +32,7 @@ export const myFolder: Folder[] = [
           children: [
             {
               id: "123-abcde",
-              foldername: "Copy Folder 3",
+              foldername: "Folder 3",
               mimetype: "audio/mpeg",
               hasThumbnail: false,
               shared: false,
@@ -42,7 +42,7 @@ export const myFolder: Folder[] = [
             },
             {
               id: "123-abcdef",
-              foldername: "Copy Folder 4",
+              foldername: "Folder 4",
               mimetype: "audio/mpeg",
               hasThumbnail: false,
               shared: false,

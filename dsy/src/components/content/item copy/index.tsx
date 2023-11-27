@@ -1,20 +1,13 @@
 import { Button, Card, Menu, MenuProps, Popover, Space } from "antd";
 import React, { useMemo, useState } from "react";
 import {
-  FolderOutlined,
   MoreOutlined,
-  FullscreenOutlined,
   DownloadOutlined,
   EditOutlined,
-  ShareAltOutlined,
-  SortAscendingOutlined,
   InfoCircleOutlined,
   CopyOutlined,
-  SwapOutlined,
-  StarOutlined,
-  HistoryOutlined,
-  PlusOutlined,
-  
+  DeleteOutlined,
+  FileOutlined
 } from "@ant-design/icons";
 
 import styles from "./styles.module.scss";
@@ -38,10 +31,23 @@ function getItem(
   } as MenuItem;
 }
 
+function copyItem(
+  label: React.ReactNode,
+  key: React.Key,
+  icon: React.ReactNode,
+  ): MenuItem {
+    
+    prompt("Add a name for the copied file!")
+    return{
+      key
+    } as MenuItem;
+    
+  }
+
 type Props = {
-  selectedFolder: Folder | undefined;
+  name: String | undefined;
 };
-export const Item: React.FC<Props> = ({ selectedFolder }) => {
+export const Item2: React.FC<Props> = ({ name }) => {
   const [showArrow, setShowArrow] = useState(true);
   const [arrowAtCenter, setArrowAtCenter] = useState(false);
   const [openKeys, setOpenKeys] = useState(["sub1"]);
@@ -59,16 +65,11 @@ export const Item: React.FC<Props> = ({ selectedFolder }) => {
 
   const text = <span>Title</span>;
   const items: MenuItem[] = [
-    // getItem("Open with", "openWith", <FullscreenOutlined />, [
-    //   getItem("Connect to other applications", "connect", <PlusOutlined />),
-    // ]),
     getItem("Download", "download", <DownloadOutlined />),
-    getItem("Copy", "copy", <DownloadOutlined />),
+    getItem("Copy", "copy", <CopyOutlined />),
     getItem("Rename", "rename", <EditOutlined />),
-    // getItem("Information", "info", <InfoCircleOutlined />, [
-      getItem("Detail", "detail", <InfoCircleOutlined />),
-      // getItem("History", "history", <HistoryOutlined />),
-    // ]),
+    getItem("Detail", "detail", <InfoCircleOutlined />),
+    getItem("Delete", "delete", <DeleteOutlined />),
   ];
   const content = (
     <div>
@@ -90,8 +91,9 @@ export const Item: React.FC<Props> = ({ selectedFolder }) => {
     <Card className={styles.card}>
       <Space color="success" className={styles.space}>
         <span>
-          <FolderOutlined />
-          {selectedFolder?.foldername}
+          <FileOutlined style={{paddingRight: 5}}/>
+          {name}
+
         </span>
         <span>
           <Popover
