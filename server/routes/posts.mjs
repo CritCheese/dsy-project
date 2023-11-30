@@ -34,15 +34,19 @@ router.get("/storages", async (req, res) => {
   //   let collection = await db.collection("storages");
   // var g;
 
-    var result = await getData().then(function (res) {
-      const x = xml2js.xml2json(res, { compact: true, spaces: 2 })
-          return x
-    })
-    // console.log(result)
-
-    res.send(JSON.parse(result)).status(200)
-  
-
+  var result = await getData().then(function (res) {
+    const x = xml2js.xml2json(res, { compact: true, spaces: 2 })
+    return x
+  })
+  res.send(result).status(200)
+  // console.log(result)
+  // let json = JSON.parse(result)
+  // let blob = json.EnumerationResults.Blobs.Blob
+  // const names = []
+  // for (var i in blob) {
+  //   names.push(blob[i].Name._text)
+  // }
+  // res.send(names).status(200)
 });
 
 // Get a list of 50 posts

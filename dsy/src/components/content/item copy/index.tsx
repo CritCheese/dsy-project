@@ -13,6 +13,7 @@ import {
 import styles from "./styles.module.scss";
 import { Folder } from "../../../types/folder.type";
 
+const baseUrl = 'http://localhost:5050/database'
 type MenuItem = Required<MenuProps>["items"][number];
 
 function getItem(
@@ -22,6 +23,9 @@ function getItem(
   children?: MenuItem[],
   type?: "group"
 ): MenuItem {
+  // if (key=='download'){
+  //   let results = await fetch(`${baseUrl}/download/${key}`).then(
+  // }
   return {
     key,
     icon,
