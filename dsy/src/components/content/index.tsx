@@ -1,5 +1,5 @@
 import { Col, Divider, Layout, Row, Space } from "antd";
-import React from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { FileOutlined, FolderOutlined } from "@ant-design/icons";
 
 import styles from './styles.module.scss';
@@ -16,71 +16,64 @@ type Props = {
 const baseUrl = 'http://localhost:5050/database'
 const { Content } = Layout;
 
-// function rowItem(names : []){
-//   var itemName = [];
-//   for (var x in names) {
-//     var render = <Row style={{ marginBottom: '2rem' }}><Col span={10}><Item2 name={x || undefined} /></Col></Row>
-//     itemName.push(render)
-//   }
-//   return(itemName)
+export const ContentComponent2 = () => {
+  const [data, setData] = useState({})
 
-// }
+  useEffect(() => {
+    const gf = async () => {
+      const ri1 = await fetch(`${baseUrl}/storages`)
+      const ri2 = await ri1.json()
 
-// const rowItem = await fetch(`${baseUrl}/storages`).then(function(res){
-//   var item1 = res.json().then(function(data){return data})
-//   var items = 
-//   console.log(items)
-//   var itemName = [];
-//   for (var x in items) {
-//     // console.log(items[x])
-//     var render = <Row style={{ marginBottom: '2rem' }}><Col span={10}><Item2 name={x || undefined} /></Col></Row>
-//     itemName.push(render)
-//   }
-//   console.log(itemName)
-//   return itemName
-// })
-// async function getitem(){
-// return itemName
+      // console.log("json", ri2);
 
-// }
+      // const jp = JSON.parse(ri2)
+      const blob = ri2.EnumerationResults.Blobs.Blob
+      var names = []
+      for (var i in blob) {
+        names.push(blob[i].Name._text)
+      }
+        var itemName = [];
 
-async function itemNamex(){
-  const rowItem = await fetch(`${baseUrl}/storages`).then(response => response.json())
-// var json = JSON.string(rowItem)
-console.log(rowItem)
-var blob = rowItem.EnumerationResults.Blobs.Blob
-var names = []
-for (var i in blob) {
-  names.push(blob[i].Name._text)
-}
-console.log(names)
+        for (var x in names) {
+          var render = <div><Row style={{ marginBottom: '2rem' }}><Col span={10}><Item2 name={names[x] || undefined} /></Col></Row></div>
+          itemName.push(render)
+        }
+        // console.log(itemName)
+        setData(itemName);    }
+    gf()
+  }, []);
+  console.log(data)
+  // let v = g.then(function(res) {return Promise.resolve(res)})
+  // Promise.all(v)
+  // useEffect(() => {
+  //   var f = async () => {
+  //     const rowItem = await fetch(`${baseUrl}/storages`).then(response => response.json())
+  //     // var json = JSON.string(rowItem)
+  // console.log((await gf()).toString)
+  //     var blob = rowItem.EnumerationResults.Blobs.Blob
+  //     var names = []
+  //     for (var i in blob) {
+  //       names.push(blob[i].Name._text)
+  //     }
+  //     console.log(names)
 
-var itemName = [];
+  //     var itemName = [];
 
-for (var x in names) {
-  // console.log(items[x])
-  var render = <Row style={{ marginBottom: '2rem' }}><Col span={10}><Item2 name={names[x] || undefined} /></Col></Row>
-  itemName.push(render)
-}
+  //     for (var x in names) {
+  //       var render = <div><Row style={{ marginBottom: '2rem' }}><Col span={10}><Item2 name={names[x] || undefined} /></Col></Row></div>
+  //       itemName.push(render)
+  //     }
+  //     return itemName
+  //   }
+  //   return f
 
- 
-console.log(itemName)
-
-  return itemName
-}
-
-export const ContentComponent: React.FC<Props> = ({ selectedFolder }) => {
-  // console.log(rowItem[1])
-  // var names = await fetch(`${baseUrl}/storages`).then(function(res){
-  //   return res.status
   // })
   // console.log(names)
-  // var x = rowItem(names)
   return (
     <Content className={styles.content}>
-      {function x(){itemNamex();return "x"}
+      {}
 
-      }
+
       <Row style={{ marginBottom: '2rem' }}>
         <Col span={10}>
           <Item2 name={'file-copy.txt' || undefined} />
@@ -109,11 +102,6 @@ export const ContentComponent: React.FC<Props> = ({ selectedFolder }) => {
     </Content>
   );
 };
-function getData() {
-  return <Space></Space>;
-}
 
-function body(arg0: JSX.Element): React.ReactNode {
-  throw new Error("Function not implemented.");
-}
+
 
