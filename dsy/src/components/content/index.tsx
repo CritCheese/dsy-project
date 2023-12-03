@@ -25,81 +25,59 @@ export const ContentComponent2 = () => {
       const ri2 = await ri1.json()
 
       // console.log("json", ri2);
-
+      // var 
       // const jp = JSON.parse(ri2)
       const blob = ri2.EnumerationResults.Blobs.Blob
       var names = []
       for (var i in blob) {
         names.push(blob[i].Name._text)
       }
-        var itemName = [];
 
-        for (var x in names) {
-          var render = <div><Row style={{ marginBottom: '2rem' }}><Col span={10}><Item2 name={names[x] || undefined} /></Col></Row></div>
-          itemName.push(render)
-        }
+      var list:ReactNode = names.map(function(d){
+        return <Row style={{ marginBottom: '2rem' }}><Col span={10}><Item2 name={d || undefined} /></Col></Row>
+      })
+        // var itemName = [];
+
+        // for (var x in names) {
+        //   var render = <div><Row style={{ marginBottom: '2rem' }}><Col span={10}><Item2 name={names[x] || undefined} /></Col></Row></div>
+        //   itemName.push(render)
+        // }
         // console.log(itemName)
-        setData(itemName);    }
+        setData(list);    }
     gf()
   }, []);
-  console.log(data)
-  // let v = g.then(function(res) {return Promise.resolve(res)})
-  // Promise.all(v)
-  // useEffect(() => {
-  //   var f = async () => {
-  //     const rowItem = await fetch(`${baseUrl}/storages`).then(response => response.json())
-  //     // var json = JSON.string(rowItem)
-  // console.log((await gf()).toString)
-  //     var blob = rowItem.EnumerationResults.Blobs.Blob
-  //     var names = []
-  //     for (var i in blob) {
-  //       names.push(blob[i].Name._text)
-  //     }
-  //     console.log(names)
 
-  //     var itemName = [];
-
-  //     for (var x in names) {
-  //       var render = <div><Row style={{ marginBottom: '2rem' }}><Col span={10}><Item2 name={names[x] || undefined} /></Col></Row></div>
-  //       itemName.push(render)
-  //     }
-  //     return itemName
-  //   }
-  //   return f
-
-  // })
-  // console.log(names)
   return (
-    <Content className={styles.content}>
-      {}
+    // <Content className={styles.content}>
+      {data}
 
 
-      <Row style={{ marginBottom: '2rem' }}>
-        <Col span={10}>
-          <Item2 name={'file-copy.txt' || undefined} />
-        </Col>
-      </Row>
-      <Row style={{ marginBottom: '2rem' }}>
-        <Col span={10}>
-          <Item2 name={'home.mp3' || undefined} />
-        </Col>
-      </Row>
-      <Row style={{ marginBottom: '2rem' }}>
-        <Col span={10}>
-          <Item2 name={'night.docx' || undefined} />
-        </Col>
-      </Row>
-      <Row style={{ marginBottom: '2rem' }}>
-        <Col span={10}>
-          <Item2 name={'oos.mp4' || undefined} />
-        </Col>
-      </Row>
-      <Row style={{ marginBottom: '2rem' }}>
-        <Col span={10}>
-          <Item2 name={'testing.txt' || undefined} />
-        </Col>
-      </Row>
-    </Content>
+    //   <Row style={{ marginBottom: '2rem' }}>
+    //     <Col span={10}>
+    //       <Item2 name={'file-copy.txt' || undefined} />
+    //     </Col>
+    //   </Row>
+    //   <Row style={{ marginBottom: '2rem' }}>
+    //     <Col span={10}>
+    //       <Item2 name={'home.mp3' || undefined} />
+    //     </Col>
+    //   </Row>
+    //   <Row style={{ marginBottom: '2rem' }}>
+    //     <Col span={10}>
+    //       <Item2 name={'night.docx' || undefined} />
+    //     </Col>
+    //   </Row>
+    //   <Row style={{ marginBottom: '2rem' }}>
+    //     <Col span={10}>
+    //       <Item2 name={'oos.mp4' || undefined} />
+    //     </Col>
+    //   </Row>
+    //   <Row style={{ marginBottom: '2rem' }}>
+    //     <Col span={10}>
+    //       <Item2 name={'testing.txt' || undefined} />
+    //     </Col>
+    //   </Row>
+    // </Content>
   );
 };
 

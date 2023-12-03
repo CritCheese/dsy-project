@@ -22,7 +22,7 @@ export const HomePage: React.FC<Props> = () => {
           <Layout hasSider style={{ backgroundColor: "rgb(233 232 232)" }}>
             <LeftSideBar setSelectedFolder={setSelectedFolder || undefined} />
             {/* myFolder.forEach((element) { */}
-              <ContentComponent2 />
+              {/* <ContentComponent2 /> */}
             {/* }); */}
             {/* <RightSideBar selectedFolder={selectedFolder || undefined} /> */}
           </Layout>
