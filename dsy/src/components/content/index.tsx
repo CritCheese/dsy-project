@@ -1,44 +1,51 @@
-import { Col, Divider, Layout, Row, Space } from "antd";
-import React from "react";
-import { FileOutlined, FolderOutlined } from "@ant-design/icons";
+import { Col,  Layout, Row } from "antd";
+import { useEffect, useState } from "react";
 
 import styles from './styles.module.scss';
-import { Item } from "./item";
-import { Folder } from "../../types/folder.type";
-import { myFolder } from "../../data/mock.data";
+import { Item2 } from "./item copy";
 
-type Props = {
-  selectedFolder: Folder | undefined;
-};
-
+const baseUrl = 'http://localhost:5050/database'
 const { Content } = Layout;
 
-export const ContentComponent: React.FC<Props> = ({ selectedFolder }) => {
+const gf = async () => {
+  const ri1 = await fetch(`${baseUrl}/storages`).then(async function (res) {
+    const ri2 = await res.json().then(function (res) {
+      const blob = res.EnumerationResults.Blobs.Blob
+      var names = []
+      for (var i in blob) {
+        names.push(blob[i].Name._text)
+      }
+      return names
+    })
+    return ri2
+  })
+  return ri1
+}
+
+function itemRender(i: string) {
+  return <Row style={{ marginBottom: '2rem' }}>
+    <Col span={10}>
+      <Item2 name={i || undefined} />
+    </Col>
+  </Row>
+}
+
+export const ContentComponent2 = () => {
+    useEffect(() => {
+    const ue = async () => {
+      const ri1 = await gf()
+      setBody(ri1)
+    }
+    ue()
+  }, [])
+  const [body, setBody] = useState<string[]>([])
+
   return (
     <Content className={styles.content}>
-      <Row>
-        <Col span={24}>
-          <Space color="success">
-            <FolderOutlined />
-            Folder
-          </Space>
-        </Col>
-        <Divider />
-      </Row>
-      <Row style={{ marginTop: '2rem' }}>
-        <Col span={4}>
-          <Item selectedFolder={selectedFolder || undefined} />
-        </Col>
-      </Row>
-      <Row>
-        <Col span={24}>
-          <Space color="success">
-            <FileOutlined />
-            File
-          </Space>
-        </Col>
-        <Divider />
-      </Row>
+      {body.map(itemRender)}
     </Content>
   );
 };
+
+
+

@@ -115,7 +115,7 @@ export const LeftSideBar: React.FC<Props> = ({ setSelectedFolder }) => {
   };
 
   const options: MenuItem[] = [
-    getItem("New Folder", "newFolder", <FolderAddOutlined />),
+    // getItem("New Folder", "newFolder", <FolderAddOutlined />),
     getItem(
       "",
       "uploadFile",
@@ -126,19 +126,19 @@ export const LeftSideBar: React.FC<Props> = ({ setSelectedFolder }) => {
         </Typography>
       </Upload>
     ),
-    getItem(
-      "",
-      "uploadFolder",
-      <Upload
-        action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
-        directory
-      >
-        <Typography>
-          <FolderAddOutlined style={{ marginRight: "10px" }} />
-          Upload Directory
-        </Typography>
-      </Upload>
-    ),
+    // getItem(
+    //   "",
+    //   "uploadFolder",
+    //   <Upload
+    //     action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
+    //     directory
+    //   >
+    //     <Typography>
+    //       <FolderAddOutlined style={{ marginRight: "10px" }} />
+    //       Upload Directory
+    //     </Typography>
+    //   </Upload>
+    // ),
   ];
 
   const content = (
