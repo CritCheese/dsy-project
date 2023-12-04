@@ -23,9 +23,6 @@ function getItem(
   children?: MenuItem[],
   type?: "group"
 ): MenuItem {
-  // if (key=='download'){
-  //   let results = await fetch(`${baseUrl}/download/${key}`).then(
-  // }
   return {
     key,
     icon,
@@ -34,19 +31,6 @@ function getItem(
     type,
   } as MenuItem;
 }
-
-function copyItem(
-  label: React.ReactNode,
-  key: React.Key,
-  icon: React.ReactNode,
-  ): MenuItem {
-    
-    prompt("Add a name for the copied file!")
-    return{
-      key
-    } as MenuItem;
-    
-  }
 
 type Props = {
   name: String | undefined;
